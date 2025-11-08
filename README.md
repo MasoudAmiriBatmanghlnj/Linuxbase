@@ -8,12 +8,12 @@ This package contains all cached packages from
 after a complete and fully updated installation of Arch Linux.
 The goal of this project is to create a self-contained offline base for reinstalling or restoring Arch Linux quickly, without needing an internet connection.
 
-📦 Contents
+***📦 Contents***
 
 Includes all essential system packages (base, base-devel, and dependencies), compressed using gzip.
 You can use it to rebuild or restore a minimal Arch Linux environment offline.
 
-⚙️ Usage
+***⚙️ Usage***
 
 Download the archive file.
 
@@ -24,7 +24,7 @@ sudo tar -xvzf Linuxbase_PKG.tar.gz -C /var/cache/pacman/pkg/
 Install all packages from the cache:
 sudo pacman -U /var/cache/pacman/pkg/*.pkg.tar.gz
 
-🧩 Notes
+***🧩 Notes***
 
 Built on a fresh and fully updated Arch Linux system (date: [ 2025/11/03 ]).
 
@@ -34,9 +34,11 @@ To create a single compressed .tar.xz archive instead, you can use:
 
 tar -cvJf Linuxbase_PKG.tar.xz /var/cache/pacman/pkg
 
-🧠 Development
+***🧠 Development***
 
 Future versions will include optional setup scripts for initial Arch configuration (locale, timezone, users, etc.) and may support automatic offline installation.
+
+#### Release: https://github.com/MasoudAmiriBatmanghlnj/Linuxbase/releases/tag/Linuxbase_PKG
 
 > ### Documentation and setup guide prepared with help from an AI assistant[ Chat GPT ].
 
@@ -52,12 +54,13 @@ Linuxbase_PKG — بسته‌ی پایه‌ی آفلاین برای Arch Linux
 بعد از نصب کامل و به‌روز آرچ لینوکس است.
 هدف این پروژه ساخت یک پایه‌ی آفلاین و خودکفا برای نصب مجدد آرچ یا بازیابی سریع سیستم بدون نیاز به اینترنت است.
 
-📦 محتوا
+
+***📦محتوا***
 
 تمام بسته‌های اصلی سیستم (base, base-devel و وابستگی‌ها) به‌صورت فشرده (gzip) ذخیره شده‌اند.
 می‌توانید از آن برای بازگردانی سریع محیط پایه استفاده کنید.
 
-⚙️ روش استفاده
+***⚙️ روش استفاده***
 
 ۱. فایل آرشیو را دانلود کنید.
 ۲. آن را در مسیر /var/cache/pacman/pkg/ استخراج کنید:
@@ -68,7 +71,7 @@ sudo tar -xvzf Linuxbase_PKG.tar.gz -C /var/cache/pacman/pkg/
 
 sudo pacman -U /var/cache/pacman/pkg/*.pkg.tar.gz
 
-🧩 نکات
+***🧩نکات***
 
 این بسته با نسخه‌ی به‌روز Arch Linux در تاریخ [2025/11/03] ساخته شده.
 
@@ -78,8 +81,10 @@ sudo pacman -U /var/cache/pacman/pkg/*.pkg.tar.gz
 
 tar -cvJf Linuxbase_PKG.tar.xz /var/cache/pacman/pkg
 
-🧠 توسعه
+ ***🧠توسعه***
 
 پروژه در حال گسترش است تا شامل اسکریپت‌های خودکار نصب و تنظیمات اولیه‌ی آرچ (مانند تنظیم زبان، timezone و کاربر) شود.
 
-نویسنده راهنما: چت جی پی تی
+#### انتشار: https://github.com/MasoudAmiriBatmanghlnj/Linuxbase/releases/tag/Linuxbase_PKG
+
+> ### مستندات و راهنمای راه‌اندازی با کمک یک دستیار هوش مصنوعی [ Chat GPT ] تهیه شده است.
