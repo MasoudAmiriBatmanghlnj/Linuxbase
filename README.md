@@ -1,4 +1,7 @@
 # Linuxbase
+
+**Tip:** Starting today, the original files will no longer be published directly. Only the corresponding Torrent files will be published.
+
 ### EN:
 This is for those who want to install or update Linux offline
 Linuxbase_PKG — Offline Base Package for Arch Linux
@@ -42,9 +45,12 @@ Future versions will include optional setup scripts for initial Arch configurati
 
 > ### Documentation and setup guide prepared with help from an AI assistant[ Chat GPT ].
 
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------
 
 ### به فارسی:
+
+**نکته:** 
+از امروز، فایل‌های اصلی مستقیماً منتشر نخواهند شد و تنها فایل‌های تورنت مربوط به آن‌ها منتشر خواهند شد.
 
 این برای کسانی است که می‌خواهند لینوکس را به صورت آفلاین نصب یا بروزرسانی کنند.
 Linuxbase_PKG — بسته‌ی پایه‌ی آفلاین برای Arch Linux
