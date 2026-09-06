@@ -41,7 +41,7 @@ tar -cvJf Linuxbase_PKG.tar.xz /var/cache/pacman/pkg
 
 Future versions will include optional setup scripts for initial Arch configuration (locale, timezone, users, etc.) and may support automatic offline installation.
 
-#### Release: https://github.com/MasoudAmiriBatmanghlnj/Linuxbase/releases/tag/Linuxbase_PKG
+#### Release: https://github.com/MasoudAmiriBatmanghlnj/Linuxbase/releases
 
 > ### Documentation and setup guide prepared with help from an AI assistant[ Chat GPT ].
 
@@ -91,6 +91,5 @@ tar -cvJf Linuxbase_PKG.tar.xz /var/cache/pacman/pkg
 
 پروژه در حال گسترش است تا شامل اسکریپت‌های خودکار نصب و تنظیمات اولیه‌ی آرچ (مانند تنظیم زبان، timezone و کاربر) شود.
 
-#### انتشار: https://github.com/MasoudAmiriBatmanghlnj/Linuxbase/releases/tag/Linuxbase_PKG
-
+#### انتشار: https://github.com/MasoudAmiriBatmanghlnj/Linuxbase/releases
 > ### مستندات و راهنمای راه‌اندازی با کمک یک دستیار هوش مصنوعی [ Chat GPT ] تهیه شده است.
