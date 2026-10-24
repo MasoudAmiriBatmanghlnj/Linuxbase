@@ -1,98 +1,213 @@
-<!DOCTYPE html><html lang="en">
+
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#10141c">
-  <meta name="description" content="Linuxbase — an offline Linux package archive and torrent release catalog.">
+  <meta name="theme-color" content="#0d1117">
+
+  <meta
+    name="description"
+    content="Linuxbase — an offline Linux package archive, organized releases, and peer-to-peer distribution."
+  >
+
   <title>Linuxbase — Linux Package Archive</title>
- <link rel="stylesheet" href="style.css"
-</head><body>
+
+  <!-- External stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
   <header>
     <div class="container">
+
       <nav class="topbar" aria-label="Main navigation">
-        <a class="brand" href="#">Linuxbase /&gt;</a>
-        <button class="lang" id="langToggle" type="button"
-          aria-label="Change language">فارسی</button>
-      </nav>  <h1><span>Linux</span>base</h1>
+        <a class="brand" href="./">Linuxbase /&gt;</a>
 
-  <p class="intro" data-en="An offline Linux package archive, organized releases, and peer-to-peer distribution."
-     data-fa="آرشیو آفلاین بسته‌های لینوکس، انتشارهای منظم و توزیع همتابه‌همتا.">
-    An offline Linux package archive, organized releases, and peer-to-peer distribution.
-  </p>
+        <button
+          class="lang"
+          id="langToggle"
+          type="button"
+          aria-label="Change language"
+        >
+          فارسی
+        </button>
+      </nav>
 
-  <div class="actions">
-    <a class="btn primary"
-       href="https://github.com/MasoudAmiriBatmanghlnj/Linuxbase/releases"
-       data-en="Browse releases" data-fa="مشاهدهٔ انتشارها">Browse releases</a>
+      <h1><span>Linux</span>base</h1>
 
-    <a class="btn"
-       href="https://github.com/MasoudAmiriBatmanghlnj/Linuxbase"
-       data-en="Source repository" data-fa="مخزن اصلی">Source repository</a>
-  </div>
-</div>
+      <p
+        class="intro"
+        data-en="An offline Linux package archive, organized releases, and peer-to-peer distribution."
+        data-fa="آرشیو آفلاین بسته‌های لینوکس، انتشارهای منظم و توزیع همتابه‌همتا."
+      >
+        An offline Linux package archive, organized releases, and peer-to-peer distribution.
+      </p>
 
-  </header>  <main class="container">
+      <div class="actions">
+        <a
+          class="btn primary"
+          href="https://github.com/MasoudAmiriBatmanghlnj/Linuxbase/releases"
+          data-en="Browse releases"
+          data-fa="مشاهدهٔ انتشارها"
+        >
+          Browse releases
+        </a>
+
+        <a
+          class="btn"
+          href="https://github.com/MasoudAmiriBatmanghlnj/Linuxbase"
+          data-en="Source repository"
+          data-fa="مخزن اصلی"
+        >
+          Source repository
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- Release catalog -->
     <section aria-labelledby="releaseTitle">
       <div class="section-head">
-        <h2 id="releaseTitle" data-en="Releases" data-fa="انتشارها">Releases</h2>
-        <span class="muted" id="releaseCount" aria-live="polite"></span>
-      </div>  <p class="muted"
-     data-en="Release information is retrieved from GitHub."
-     data-fa="اطلاعات انتشارها از GitHub دریافت می‌شود.">
-    Release information is retrieved from GitHub.
-  </p>
+        <h2
+          id="releaseTitle"
+          data-en="Releases"
+          data-fa="انتشارها"
+        >
+          Releases
+        </h2>
 
-  <label for="search" class="muted"
-    data-en="Search releases" data-fa="جست‌وجو در انتشارها">Search releases</label>
+        <span
+          class="muted"
+          id="releaseCount"
+          aria-live="polite"
+        ></span>
+      </div>
 
-  <input class="search" id="search" type="search"
-    placeholder="Search by release name or tag…"
-    data-placeholder-en="Search by release name or tag…"
-    data-placeholder-fa="جست‌وجو بر اساس نام یا برچسب نسخه…">
+      <p
+        class="muted"
+        data-en="Release information is retrieved from GitHub."
+        data-fa="اطلاعات انتشارها از GitHub دریافت می‌شود."
+      >
+        Release information is retrieved from GitHub.
+      </p>
 
-  <div id="status" class="status" role="status" aria-live="polite">
-    Loading releases…
-  </div>
+      <label
+        for="search"
+        class="muted"
+        data-en="Search releases"
+        data-fa="جست‌وجو در انتشارها"
+      >
+        Search releases
+      </label>
 
-  <div class="releases" id="releases"></div>
-</section>
+      <input
+        class="search"
+        id="search"
+        type="search"
+        placeholder="Search by release name or tag…"
+        data-placeholder-en="Search by release name or tag…"
+        data-placeholder-fa="جست‌وجو بر اساس نام یا برچسب نسخه…"
+        autocomplete="off"
+      >
 
-<section class="info-grid" aria-label="Project information">
-  <article class="info">
-    <h3 data-en="Offline access" data-fa="دسترسی آفلاین">Offline access</h3>
-    <p class="muted"
-      data-en="Keep downloaded archives available for future use."
-      data-fa="آرشیوهای دریافت‌شده را برای استفاده در آینده نگه دارید.">
-      Keep downloaded archives available for future use.
-    </p>
-  </article>
+      <div
+        id="status"
+        class="status"
+        role="status"
+        aria-live="polite"
+      >
+        Loading releases…
+      </div>
 
-  <article class="info">
-    <h3 data-en="Torrent distribution" data-fa="توزیع تورنت">Torrent distribution</h3>
-    <p class="muted"
-      data-en="Download torrent files from release assets when available."
-      data-fa="در صورت موجود بودن، فایل‌های تورنت را از بخش فایل‌های انتشار دریافت کنید.">
-      Download torrent files from release assets when available.
-    </p>
-  </article>
+      <div
+        class="releases"
+        id="releases"
+        aria-label="Release list"
+      ></div>
+    </section>
 
-  <article class="info">
-    <h3 data-en="Verification" data-fa="بررسی صحت فایل">Verification</h3>
-    <p class="muted"
-      data-en="Check published checksums and signatures when provided."
-      data-fa="در صورت انتشار هش و امضا، آن‌ها را برای بررسی صحت فایل به کار ببرید.">
-      Check published checksums and signatures when provided.
-    </p>
-  </article>
-</section>
+    <!-- Project information -->
+    <section class="info-grid" aria-label="Project information">
 
-  </main>  <footer>
+      <article class="info">
+        <h3
+          data-en="Offline access"
+          data-fa="دسترسی آفلاین"
+        >
+          Offline access
+        </h3>
+
+        <p
+          class="muted"
+          data-en="Keep downloaded archives available for future use."
+          data-fa="آرشیوهای دریافت‌شده را برای استفاده در آینده نگه دارید."
+        >
+          Keep downloaded archives available for future use.
+        </p>
+      </article>
+
+      <article class="info">
+        <h3
+          data-en="Torrent distribution"
+          data-fa="توزیع تورنت"
+        >
+          Torrent distribution
+        </h3>
+
+        <p
+          class="muted"
+          data-en="Download torrent files from release assets when available."
+          data-fa="در صورت موجود بودن، فایل‌های تورنت را از بخش فایل‌های انتشار دریافت کنید."
+        >
+          Download torrent files from release assets when available.
+        </p>
+      </article>
+
+      <article class="info">
+        <h3
+          data-en="Verification"
+          data-fa="بررسی صحت فایل"
+        >
+          Verification
+        </h3>
+
+        <p
+          class="muted"
+          data-en="Check published checksums and signatures when provided."
+          data-fa="در صورت انتشار هش و امضا، آن‌ها را برای بررسی صحت فایل به کار ببرید."
+        >
+          Check published checksums and signatures when provided.
+        </p>
+      </article>
+
+    </section>
+  </main>
+
+  <footer>
     <div class="container">
       Linuxbase ·
-      <a href="https://github.com/MasoudAmiriBatmanghlnj/Linuxbase">GitHub</a>
-      · <span data-en="Community project" data-fa="پروژه‌ای جامعه‌محور">Community project</span>
+
+      <a
+        href="https://github.com/MasoudAmiriBatmanghlnj/Linuxbase"
+      >
+        GitHub
+      </a>
+
+      ·
+
+      <span
+        data-en="Community project"
+        data-fa="پروژه‌ای جامعه‌محور"
+      >
+        Community project
+      </span>
     </div>
   </footer>
-  <scrip src="script.js" defer></scrip>
+
+  <!-- External JavaScript -->
+  <script src="script.js" defer></script>
 </body>
 </html>
