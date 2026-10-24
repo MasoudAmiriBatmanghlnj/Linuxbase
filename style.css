@@ -1,4 +1,4 @@
- <style>
+
     :root {
       color-scheme: dark;
       --bg: #0d1117;
@@ -236,4 +236,3 @@ html[dir="rtl"] .topbar { flex-direction: row; }
   user-select: all;
 }
 
-  </style>
