@@ -1,120 +1,498 @@
 <!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Linuxbase - An archive of Linux packages and releases for offline use.">
-  <title>Linuxbase | Linux Package Archive</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10141c">
+  <meta name="description" content="Linuxbase — an offline Linux package archive and torrent release catalog.">
+  <title>Linuxbase — Linux Package Archive</title>
   <style>
-    * { box-sizing: border-box; }body {
+    :root {
+      color-scheme: dark;
+      --bg: #0d1117;
+      --panel: #161b22;
+      --border: #30363d;
+      --text: #e6edf3;
+      --muted: #9da7b3;
+      --green: #3fb950;
+      --blue: #79c0ff;
+    }* { box-sizing: border-box; }
+
+body {
   margin: 0;
-  font-family: system-ui, sans-serif;
-  background: #10141c;
-  color: #e6edf3;
-  line-height: 1.7;
+  background: var(--bg);
+  color: var(--text);
+  font: 16px/1.7 system-ui, sans-serif;
+}
+
+a { color: var(--blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+button, input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.container {
+  width: min(100% - 32px, 1000px);
+  margin: auto;
 }
 
 header {
-  padding: 55px 20px;
-  text-align: center;
-  background: #161d29;
-  border-bottom: 1px solid #303b4d;
+  padding: 48px 0 38px;
+  border-bottom: 1px solid var(--border);
+  background: #111820;
 }
 
-header h1 {
-  font-size: 2.7rem;
-  margin: 0;
-  color: #7ee787;
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
 }
 
-header p { color: #b5c0cf; }
-
-main {
-  max-width: 850px;
-  margin: 35px auto;
-  padding: 0 20px;
+.brand {
+  font-size: 1.25rem;
+  font-weight: 750;
+  color: var(--green);
 }
 
-section {
-  background: #161d29;
-  border: 1px solid #303b4d;
-  border-radius: 12px;
-  padding: 22px;
-  margin-bottom: 20px;
+.lang {
+  padding: 7px 12px;
+  color: var(--text);
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 8px;
 }
 
-h2 { color: #7ee787; }
-
-a {
-  color: #79c0ff;
-  text-decoration: none;
+h1 {
+  margin: 35px 0 8px;
+  font-size: clamp(2.2rem, 7vw, 4rem);
+  line-height: 1.15;
+  letter-spacing: -1.5px;
 }
 
-a:hover { text-decoration: underline; }
+h1 span { color: var(--green); }
 
-.button {
+.intro {
+  max-width: 650px;
+  color: var(--muted);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.btn {
   display: inline-block;
-  background: #238636;
-  color: white;
-  padding: 10px 16px;
-  border-radius: 7px;
-  margin: 5px;
+  padding: 9px 15px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  background: var(--panel);
 }
+
+.btn.primary {
+  background: #238636;
+  border-color: #238636;
+  color: white;
+}
+
+main { padding: 28px 0 55px; }
+
+.section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+h2 { font-size: 1.45rem; }
+
+.muted { color: var(--muted); }
+
+.search {
+  width: 100%;
+  margin: 12px 0 20px;
+  padding: 12px 14px;
+  color: var(--text);
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  outline-offset: 3px;
+}
+
+.releases {
+  display: grid;
+  gap: 15px;
+}
+
+.release {
+  padding: 20px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow-wrap: anywhere;
+}
+
+.release h3 {
+  margin: 0 0 5px;
+  font-size: 1.15rem;
+}
+
+.date {
+  font-size: .9rem;
+  color: var(--muted);
+}
+
+.description {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  color: #c9d1d9;
+  font-size: .94rem;
+  max-height: 180px;
+  overflow: auto;
+}
+
+.assets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 16px;
+}
+
+.asset {
+  display: inline-block;
+  padding: 6px 10px;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  font-size: .9rem;
+}
+
+.status {
+  padding: 14px;
+  color: var(--muted);
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 9px;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+  margin-top: 30px;
+}
+
+.info {
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.info h3 { margin-top: 0; color: var(--green); }
 
 footer {
+  padding: 22px 0;
+  border-top: 1px solid var(--border);
   text-align: center;
-  padding: 25px;
-  color: #8b949e;
-  border-top: 1px solid #303b4d;
+  color: var(--muted);
+  font-size: .9rem;
+}
+
+[hidden] { display: none !important; }
+
+html[dir="rtl"] body { text-align: right; }
+html[dir="rtl"] h1 { letter-spacing: 0; }
+html[dir="rtl"] .topbar { flex-direction: row; }
+
+@media (max-width: 520px) {
+  header { padding-top: 25px; }
+  h1 { margin-top: 28px; }
+  .release { padding: 15px; }
 }
 
   </style>
-</head>
-<body>
+</head><body>
   <header>
-    <h1>Linuxbase</h1>
-    <p>Linux Package Archive &amp; Releases</p>
-    <p>A community-oriented project for preserving and sharing Linux packages.</p>
-    <a class="button" href="https://github.com/MasoudAmiriBatmanghlnj/Linuxbase">GitHub Repository</a>
-  </header>  <main>
-    <section>
-      <h2>About Linuxbase</h2>
-      <p>
-        Linuxbase is a project for organizing and sharing Linux package
-        archives and release files, with a focus on offline access,
-        preservation, and peer-to-peer distribution.
-      </p>
-    </section><section>
-  <h2>Releases</h2>
-  <p>
-    Find available releases, package archives, torrent files,
-    checksums, and related documentation in the project repository.
+    <div class="container">
+      <nav class="topbar" aria-label="Main navigation">
+        <a class="brand" href="#">Linuxbase /&gt;</a>
+        <button class="lang" id="langToggle" type="button"
+          aria-label="Change language">فارسی</button>
+      </nav>  <h1><span>Linux</span>base</h1>
+
+  <p class="intro" data-en="An offline Linux package archive, organized releases, and peer-to-peer distribution."
+     data-fa="آرشیو آفلاین بسته‌های لینوکس، انتشارهای منظم و توزیع همتابه‌همتا.">
+    An offline Linux package archive, organized releases, and peer-to-peer distribution.
   </p>
-  <a class="button" href="https://github.com/MasoudAmiriBatmanghlnj/Linuxbase/releases">
-    View All Releases
-  </a>
+
+  <div class="actions">
+    <a class="btn primary"
+       href="https://github.com/MasoudAmiriBatmanghlnj/Linuxbase/releases"
+       data-en="Browse releases" data-fa="مشاهدهٔ انتشارها">Browse releases</a>
+
+    <a class="btn"
+       href="https://github.com/MasoudAmiriBatmanghlnj/Linuxbase"
+       data-en="Source repository" data-fa="مخزن اصلی">Source repository</a>
+  </div>
+</div>
+
+  </header>  <main class="container">
+    <section aria-labelledby="releaseTitle">
+      <div class="section-head">
+        <h2 id="releaseTitle" data-en="Releases" data-fa="انتشارها">Releases</h2>
+        <span class="muted" id="releaseCount" aria-live="polite"></span>
+      </div>  <p class="muted"
+     data-en="Release information is retrieved from GitHub."
+     data-fa="اطلاعات انتشارها از GitHub دریافت می‌شود.">
+    Release information is retrieved from GitHub.
+  </p>
+
+  <label for="search" class="muted"
+    data-en="Search releases" data-fa="جست‌وجو در انتشارها">Search releases</label>
+
+  <input class="search" id="search" type="search"
+    placeholder="Search by release name or tag…"
+    data-placeholder-en="Search by release name or tag…"
+    data-placeholder-fa="جست‌وجو بر اساس نام یا برچسب نسخه…">
+
+  <div id="status" class="status" role="status" aria-live="polite">
+    Loading releases…
+  </div>
+
+  <div class="releases" id="releases"></div>
 </section>
 
-<section>
-  <h2>Download via Torrent</h2>
-  <p>
-    Open the release page to find available torrent files and
-    download information. Verify file checksums when provided.
-  </p>
-</section>
+<section class="info-grid" aria-label="Project information">
+  <article class="info">
+    <h3 data-en="Offline access" data-fa="دسترسی آفلاین">Offline access</h3>
+    <p class="muted"
+      data-en="Keep downloaded archives available for future use."
+      data-fa="آرشیوهای دریافت‌شده را برای استفاده در آینده نگه دارید.">
+      Keep downloaded archives available for future use.
+    </p>
+  </article>
 
-<section>
-  <h2>Contribute</h2>
-  <p>
-    Explore the source code, report issues, or contribute improvements
-    through GitHub.
-  </p>
-  <a class="button" href="https://github.com/MasoudAmiriBatmanghlnj/Linuxbase/issues">
-    Report an Issue
-  </a>
+  <article class="info">
+    <h3 data-en="Torrent distribution" data-fa="توزیع تورنت">Torrent distribution</h3>
+    <p class="muted"
+      data-en="Download torrent files from release assets when available."
+      data-fa="در صورت موجود بودن، فایل‌های تورنت را از بخش فایل‌های انتشار دریافت کنید.">
+      Download torrent files from release assets when available.
+    </p>
+  </article>
+
+  <article class="info">
+    <h3 data-en="Verification" data-fa="بررسی صحت فایل">Verification</h3>
+    <p class="muted"
+      data-en="Check published checksums and signatures when provided."
+      data-fa="در صورت انتشار هش و امضا، آن‌ها را برای بررسی صحت فایل به کار ببرید.">
+      Check published checksums and signatures when provided.
+    </p>
+  </article>
 </section>
 
   </main>  <footer>
-    Linuxbase · Open source · Hosted with GitHub Pages
-  </footer>
-</body>
+    <div class="container">
+      Linuxbase ·
+      <a href="https://github.com/MasoudAmiriBatmanghlnj/Linuxbase">GitHub</a>
+      · <span data-en="Community project" data-fa="پروژه‌ای جامعه‌محور">Community project</span>
+    </div>
+  </footer>  <script>
+    const API =
+      "https://api.github.com/repos/MasoudAmiriBatmanghlnj/Linuxbase/releases";
+
+    const list = document.getElementById("releases");
+    const statusBox = document.getElementById("status");
+    const search = document.getElementById("search");
+    const count = document.getElementById("releaseCount");
+    const langToggle = document.getElementById("langToggle");
+
+    let allReleases = [];
+    let language = "en";
+
+    const messages = {
+      en: {
+        loading: "Loading releases…",
+        error: "Could not load releases. Check your connection and try again.",
+        empty: "No releases match your search.",
+        none: "No published releases were found.",
+        view: "View release",
+        torrent: "Download .torrent",
+        noAssets: "No downloadable assets attached to this release.",
+        releases: "releases",
+        copy: "Copy link",
+        copied: "Link copied",
+        copyError: "Could not copy the link.",
+        draft: "Draft",
+        count: n => `${n} releases`
+      },
+      fa: {
+        loading: "در حال دریافت انتشارها…",
+        error: "دریافت انتشارها ناموفق بود. اتصال را بررسی و دوباره تلاش کنید.",
+        empty: "انتشاری با این عبارت پیدا نشد.",
+        none: "هیچ انتشار منتشرشده‌ای پیدا نشد.",
+        view: "مشاهدهٔ انتشار",
+        torrent: "دریافت فایل تورنت",
+        noAssets: "فایلی برای دریافت به این انتشار پیوست نشده است.",
+        releases: "انتشار",
+        copy: "کپی پیوند",
+        copied: "پیوند کپی شد",
+        copyError: "کپی پیوند ناموفق بود.",
+        draft: "پیش‌نویس",
+        count: n => `${n} انتشار`
+      }
+    };
+
+    function setLanguage(next) {
+      language = next;
+      document.documentElement.lang = language;
+      document.documentElement.dir = language === "fa" ? "rtl" : "ltr";
+
+      document.querySelectorAll("[data-en][data-fa]").forEach(el => {
+        el.textContent = el.dataset[language];
+      });
+
+      search.placeholder = search.dataset["placeholder" + (language === "fa" ? "Fa" : "En")];
+      langToggle.textContent = language === "en" ? "فارسی" : "English";
+      langToggle.setAttribute("aria-label",
+        language === "en" ? "تغییر زبان به فارسی" : "Switch language to English");
+
+      render();
+    }
+
+    langToggle.addEventListener("click", () => {
+      setLanguage(language === "en" ? "fa" : "en");
+    });
+
+    function makeLink(label, url, className = "asset") {
+      const a = document.createElement("a");
+      a.className = className;
+      a.href = url;
+      a.textContent = label;
+      a.rel = "noopener noreferrer";
+      return a;
+    }
+
+    function render() {
+      const q = search.value.trim().toLowerCase();
+      const filtered = allReleases.filter(r =>
+        [r.name, r.tag_name, r.body]
+          .some(v => (v || "").toLowerCase().includes(q))
+      );
+
+      list.replaceChildren();
+      count.textContent = messages[language].count(filtered.length);
+
+      if (!filtered.length) {
+        statusBox.hidden = false;
+        statusBox.textContent = allReleases.length
+          ? messages[language].empty
+          : messages[language].none;
+        return;
+      }
+
+      statusBox.hidden = true;
+
+      filtered.forEach(release => {
+        const card = document.createElement("article");
+        card.className = "release";
+
+        const title = document.createElement("h3");
+        title.textContent = release.name || release.tag_name || "Release";
+        card.appendChild(title);
+
+        const date = document.createElement("div");
+        date.className = "date";
+
+        const parsedDate = release.published_at || release.created_at;
+        date.textContent =
+          (release.tag_name || "") +
+          (parsedDate ? " · " + new Date(parsedDate).toLocaleDateString(
+            language === "fa" ? "fa-IR" : "en-GB",
+            { year: "numeric", month: "short", day: "numeric" }
+          ) : "") +
+          (release.draft ? " · " + messages[language].draft : "");
+        card.appendChild(date);
+
+        if (release.body) {
+          const description = document.createElement("p");
+          description.className = "description";
+          description.textContent = release.body.slice(0, 2500);
+          card.appendChild(description);
+        }
+
+        const assets = document.createElement("div");
+        assets.className = "assets";
+        assets.appendChild(makeLink(
+          messages[language].view, release.html_url, "btn"
+        ));
+
+        const torrentAssets = release.assets.filter(asset =>
+          asset.name.toLowerCase().endsWith(".torrent")
+        );
+
+        torrentAssets.forEach(asset => {
+          assets.appendChild(makeLink(
+            `${messages[language].torrent}: ${asset.name}`,
+            asset.browser_download_url
+          ));
+        });
+
+        const checksumAssets = release.assets.filter(asset =>
+          /\.(sha256|sha256sum|sha512|sig|asc|txt)$/i.test(asset.name)
+        );
+
+        checksumAssets.forEach(asset => {
+          assets.appendChild(makeLink(
+            asset.name, asset.browser_download_url
+          ));
+        });
+
+        if (release.assets.length === 0) {
+          const note = document.createElement("p");
+          note.className = "muted";
+          note.textContent = messages[language].noAssets;
+          card.appendChild(note);
+        }
+
+        card.appendChild(assets);
+        list.appendChild(card);
+      });
+    }
+
+    search.addEventListener("input", render);
+
+    async function loadReleases() {
+      statusBox.hidden = false;
+      statusBox.textContent = messages[language].loading;
+
+      try {
+        const response = await fetch(API, {
+          headers: { Accept: "application/vnd.github+json" }
+        });
+
+        if (!response.ok) throw new Error("GitHub API: " + response.status);
+
+        allReleases = await response.json();
+        allReleases = allReleases.filter(r => !r.draft);
+
+        render();
+      } catch (error) {
+        statusBox.hidden = false;
+        statusBox.textContent = messages[language].error;
+        console.error(error);
+      }
+    }
+
+    setLanguage("en");
+    loadReleases();
+  </script></body>
 </html>
